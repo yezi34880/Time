@@ -33,7 +33,7 @@ namespace Time
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (DateTime.TryParse(ApplicationData.Current.LocalSettings.Values["Birth"].ToString(), out birth) == false)
+            if (ApplicationData.Current.LocalSettings.Values["Birth"]==null)
             {
                 SettingDialog setting = new SettingDialog();
                 await setting.ShowAsync();

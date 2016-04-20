@@ -15,6 +15,7 @@
     <Grid>
         <StackPanel>
             <DatePicker  x:Name="datapicker"></DatePicker>
+            <TimePicker HorizontalAlignment="Center"  x:Name="timepicker"></TimePicker>
         </StackPanel>
     </Grid>
 </ContentDialog>

@@ -23,11 +23,21 @@ namespace Time
         public SettingDialog()
         {
             this.InitializeComponent();
+            if (ApplicationData.Current.LocalSettings.Values["Birth"]!=null)
+            {
+                DateTime birth;
+                if (DateTime.TryParse(ApplicationData.Current.LocalSettings.Values["Birth"].ToString(), out birth))
+                {
+                    datapicker.Date = birth.Date;
+                    timepicker.Time = birth.TimeOfDay;
+                }
+
+            }
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            ApplicationData.Current.LocalSettings.Values["Birth"] = datapicker.Date.ToString();
+            ApplicationData.Current.LocalSettings.Values["Birth"] = (datapicker.Date + timepicker.Time).ToString();
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
